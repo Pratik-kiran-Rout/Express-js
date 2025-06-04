@@ -2,8 +2,8 @@ const http = require('http');
 const {readFileSync} = require('fs');
 
 // read all files
-const homePage = readFileSync('./basicExpress/html/index.html');
-const aboutPage = readFileSync('./basicExpress/html/about.html');
+const homePage = readFileSync('./httpBasic/html/index.html');
+const aboutPage = readFileSync('./httpBasic/html/about.html');
 
 const server = http.createServer((req,res)=>{
        const url= req.url;

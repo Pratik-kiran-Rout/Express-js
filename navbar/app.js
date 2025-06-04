@@ -9,7 +9,7 @@ const logic = readFileSync('./navbar/logic.js');
 
 const server = http.createServer((req,res)=>{
        const url= req.url;
-     //   console.log(url);
+       console.log(url);
        // Home pAGE
        if( url ==='/' || url ==='/home'){
           res.writeHead(200,{'content-type':'text/html'});
