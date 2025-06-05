@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-// setup static and middleware
+// setup static and middleware buit-in 
 app.use(express.static('./public'));
 
 //send file to the browser and give the absolute path by using path.resolve
