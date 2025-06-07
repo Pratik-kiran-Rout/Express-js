@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon middleware/app.js"
+    "start": "nodemon httpMethods/app.js"
   },
   "repository": {
     "type": "git",
