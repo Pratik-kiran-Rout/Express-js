@@ -15,16 +15,18 @@ app.use(express.urlencoded({extended:false}))
 //! express.json() is a middleware function
 app.use(express.json()) ;
 
-
-
 //!  IMP
 
 //! Autho Router
 app.use('/login',auth);
+// here we use the '/login' as main router so in 
+//? auth.js file we use '/' as main router instead of '/login'
 
 //! people router
-app.use('/api/people',people);
 
+app.use('/api/people',people);
+//here we use the '/ap/people' as main router so in 
+//? people.js file we use '/' as main router instead of '/api/people'
 
 //! run the surver 
 app.listen(5000,()=>{
