@@ -28,6 +28,67 @@ res.status(201).json({success:true,person:name});
 })
 // here by using post method we add the data  
 
+// in postman we use post method in json format and send the data
+// {
+//      "name" : "pratik"
+// } here name is the key as in post we send the data
+
+//! postman is used to send the data and stored as array in the database data.js
+app.post ('/api/postman/people',(req,res)=>{
+const {name} = req.body;
+if(!name){
+     return res
+     .status(400)
+     .json({success:false, msg:'please provide name value'})
+     }
+res.status(201).json({success:true,data:[...people,name]});
+})
+ 
+//! PUT method IMP
+app.put('/api/people/:id',(req,res)=>{
+     const {id} = req.params;
+     const {name} =req.body;
+     // console.log(id,name);
+     // res.status(200).send('Hello World');
+
+     const person = people.find((person)=>person.id === Number(id));
+     // .find return the first element that matches the condition
+     if(!person){
+          return
+          res
+          .status(400)
+          .json({success:false,msg:`no person with id ${id}`});
+     
+     }
+     //.map return a new array by applying a function to each element
+    //? person{ id:1, name:'pratik'} having two parameters
+
+     const newPeople = people.map((person)=>{
+          if(person.id=== Number(id)){
+               person.name = name; //update with the new name
+          }
+          return person; //return the updated person to the new array
+     })
+     res.status(200).json({success:true,data:newPeople});
+})
+
+//! DELETE method
+app.delete('/api/people/:id',(req,res)=>{
+     const {id} = req.params;
+     const person = people.find((person)=> person.id === Number(id));
+
+     if(!person){
+          return res
+          .status(400)
+          .json({success: false,msg:`No person with id ${id}`});
+     }
+     const newPeople = people.filter((person)=>person.id !== Number(id));
+     res.status(200).json({success:true,data:newPeople});
+})
+
+
+
+//! This route handles the login form submission for traditional form
 app.post('/login',(req,res)=>{
      // console.log(req.body); it recieves data from the form 
      const {name} = req.body;
@@ -42,16 +103,4 @@ app.listen(5000,()=>{
      console.log("server is running in the port 5000 ...");
 })
 
-                   //! Express.urlencoded()
-
-//! app.use(express.urlencoded({extended:false})) is used to parse the incoming request bodies in a middleware before your handlers, available under the req.body property.
-
-//! in simple it is used to parse the form data from the request body and make it available in req.body object.
-
-// ! The extended option allows to choose between parsing the URL-encoded data with the querystring library (when false) or the qs library (when true). The qs library allows for rich objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded.
-
-                 //? Express.urlencoded()
-
-//? express.static() is a built-in middleware function in Express. It serves static files, such as images, CSS files, and JavaScript files. It is used to serve files from a directory that you specify.
-
-//? in simple words it is used to serve static files from a directory. In this case, it serves the files from the 'methods-public' directory.
+               
