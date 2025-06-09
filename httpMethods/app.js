@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 const people = require('./routers/people');
-const auth = require
+const auth = require('./routers/auth');
 
 //! Middleware built-in
 app.use(express.static('./methods-public'));
