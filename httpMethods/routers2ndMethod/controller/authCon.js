@@ -1,7 +1,7 @@
 //controller for auth router
 
 
-//! Auth Router
+//! Autho Router
 const userLogin = (req,res)=>{
      const {name} = req.body; // thats the reason we use post method
      if(name){
