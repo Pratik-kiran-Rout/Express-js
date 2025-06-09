@@ -3,13 +3,13 @@
 //import the data from the data.js
 let {people} = require('../data');
 
-//  get method
+//!  get method
 const getPeople = (req,res)=>{
      res.status(200).json({success:true, data:people});
 }
 
 
-// post method
+//! post method
 const createPeople = (req,res)=>{
      const {name} = req.body
      if(!name){
@@ -17,7 +17,7 @@ const createPeople = (req,res)=>{
      }
 res.status(201).json({success:true,person:name});
 }
-// post method 
+//! post method 
 const createPeoplePostman = (req,res)=>{
 const {name} = req.body;
 if(!name){
@@ -28,7 +28,7 @@ if(!name){
 res.status(201).json({success:true,data:[...people,name]});
 }
 
-// put method
+//! put method
 const updatePeople = (req,res)=>{
      const {id} = req.params;
      const {name} =req.body;
@@ -50,7 +50,7 @@ const updatePeople = (req,res)=>{
      res.status(200).json({success:true,data:newPeople});
 }
 
-// delete method
+//! delete method
 const deletePeople = (req,res)=>{
      const {id} = req.params;
      const person = people.find((person)=> person.id === Number(id));
@@ -65,7 +65,8 @@ const deletePeople = (req,res)=>{
 }
 
 
-//exports
+//!exports
+
 module.exports = {
      getPeople,
      createPeople,
