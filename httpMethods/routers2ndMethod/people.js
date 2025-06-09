@@ -9,24 +9,33 @@ const { getPeople,
 
 //? The main route is " /api/people " mainly used to send the data
 
-//! GET method
-router.get('/', getPeople)
+                              //! Method no 1
+// ! without chaining
 
-//! POST method
-router.post('/', createPeople)
+//? GET method
+//router.get('/', getPeople)
 
-//! POST method for postman 
-router.post ('/postman', createPeoplePostman)
+//? POST method
+//router.post('/', createPeople)
+
+//? POST method for postman 
+//router.post ('/postman', createPeoplePostman)
  
-//! PUT method IMP
-router.put('/:id', updatePeople)
+//? PUT method IMP
+//router.put('/:id', updatePeople)
 
-//! DELETE method
-router.delete('/:id', deletePeople)
+//? DELETE method
+//router.delete('/:id', deletePeople)
 
-//! export the router
+                                       //! Method no 2
+
+//!  now chain the routers 
+router.route('/').get(getPeople).post(createPeople);
+
+router.route('/postman').post(createPeoplePostman);
+
+router.route('/:id').put(updatePeople).delete(deletePeople);
+
+
+//? export the router
 module.exports = router
-
-
-
-
