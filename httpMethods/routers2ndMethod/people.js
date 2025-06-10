@@ -9,11 +9,11 @@ const { getPeople,
 
 //? The main route is " /api/people " mainly used to send the data
 
-                              //! Method no 1
+                              //! Method no 1 
 // ! without chaining
 
 //? GET method
-//router.get('/', getPeople)
+//router.get('/', getPeople)  
 
 //? POST method
 //router.post('/', createPeople)
@@ -24,9 +24,10 @@ const { getPeople,
 //? PUT method IMP
 //router.put('/:id', updatePeople)
 
+
 //? DELETE method
 //router.delete('/:id', deletePeople)
-
+// dele
                                        //! Method no 2
 
 //!  now chain the routers 
